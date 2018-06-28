@@ -11,11 +11,6 @@ $GLOBALS['config']['installPath'] = '/var/www';
 ini_set('memory_limit', '16M');
 define('IO_REDIRECT', ' > /dev/null 2>&1');
 
-//Check if root
-if ($_SERVER['USER'] != 'root') {
-    error("You need to run the install with root privileges\n");
-}
-
 //Install name
 $GLOBALS['config']['installName'] = 'giscuit';
 if(file_exists("/etc/apache2/sites-available/{$GLOBALS['config']['installName']}") ||
@@ -55,8 +50,8 @@ run("mkdir -p {$GLOBALS['config']['installPath']} ");
 
 //Utils
 fwrite(STDOUT, "Downloading and installing utilities...\n");
-run('apt-get -y -qq install unzip python-imaging ttf-freefont ttf-liberation python-software-properties');
 run('apt-get -y -qq update');
+run('apt-get -y -qq install unzip python-imaging ttf-freefont ttf-liberation python-software-properties');
 
 //Apache
 fwrite(STDOUT, "Downloading and installing Apache...\n");
@@ -95,23 +90,14 @@ run("chmod 0700 {$GLOBALS['config']['installPath']}/configs/config.xml");
 //Restart services
 fwrite(STDOUT, "Restarting services...\n");
 run('/etc/init.d/apache2 restart');
-run('/etc/init.d/postgresql restart');
 
 //Done
 fwrite(STDOUT, "\nPlease access http://YOUR_DOMAIN/install.php to proceed with the installation.\n");
 
-function run($cmd, $user = NULL, $force = false) {
-    if($user != NULL) {
-        $cmd = "sudo su -l $user bash -c \"$cmd\"";
-    }
-
-    if($force == true || $GLOBALS['pretend'] == false) {
-        $output = NULL;
-        exec($cmd, $output);
-        return $output;
-    } else {
-        fwrite(STDOUT, "$cmd\n");
-    }
+function run($cmd) {
+    $output = NULL;
+    exec($cmd, $output);
+    return $output;
 }
 
 function error($str) {

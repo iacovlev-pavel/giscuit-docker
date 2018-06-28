@@ -14,7 +14,7 @@ RUN \
   apt-get -y upgrade && \
   apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
-  apt-get install -y byobu curl git htop man unzip vim wget php5-cli nano && \
+  apt-get install -y byobu curl git htop man wget php5-cli nano && \
   rm -rf /var/lib/apt/lists/*
 
 # Install Giscuit.
