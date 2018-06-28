@@ -88,10 +88,6 @@ run('chown -R www-data:www-data /var/lib/php5');
 run("chown -R www-data:www-data {$GLOBALS['config']['installPath']}");
 run("chmod 0700 {$GLOBALS['config']['installPath']}/configs/config.xml");
 
-//Restart services
-fwrite(STDOUT, "Restarting services...\n");
-run('/etc/init.d/apache2 restart');
-
 //Done
 fwrite(STDOUT, "\nPlease access http://YOUR_DOMAIN/install.php to proceed with the installation.\n");
 

@@ -2,7 +2,13 @@
 * [ubuntu:14.04](https://registry.hub.docker.com/u/library/ubuntu/)
 
 ### Installation
+* https://docs.docker.com/install/
 
-### Usage
+### Build
     docker build github.com/iacovlev-pavel/giscuit-docker -t giscuit-docker
-    docker run --expose 80 --name giscuit -itd giscuit-docker
+
+### Run
+    docker run -p 80:80 --name giscuit -itd giscuit-docker
+
+### Connect
+    docker exec -i -t giscuit /bin/bash
