@@ -8,6 +8,7 @@ $GLOBALS['config']['ioncube']['downloadUrl'] = 'http://downloads.ioncube.com/loa
 $GLOBALS['config']['ioncube']['installPath'] = '/usr/local';
 $GLOBALS['config']['installPath'] = '/var/www';
 
+putenv('DEBIAN_FRONTEND=noninteractive');
 ini_set('memory_limit', '16M');
 define('IO_REDIRECT', ' > /dev/null 2>&1');
 
