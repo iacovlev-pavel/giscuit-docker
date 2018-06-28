@@ -14,13 +14,17 @@ RUN \
   apt-get -y upgrade && \
   apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
-  apt-get install -y nano byobu curl git htop man unzip wget php5-cli && \
+  apt-get install -y byobu curl git htop man unzip vim wget php5-cli nano && \
   rm -rf /var/lib/apt/lists/*
 
 # Install Giscuit.
+ADD root/install.php /root/install.php
+RUN php /root/install.php
 
 # Add files.
 ADD root/.bashrc /root/.bashrc
+ADD root/.gitconfig /root/.gitconfig
+ADD root/.scripts /root/.scripts
 
 # Set environment variables.
 ENV HOME /root

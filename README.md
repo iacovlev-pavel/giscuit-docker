@@ -4,4 +4,5 @@
 ### Installation
 
 ### Usage
-    docker run -it --rm dockerfile/ubuntu
+    docker build github.com/iacovlev-pavel/giscuit-docker
+    docker run --expose 80 --name giscuit -it giscuit-docker
