@@ -5,10 +5,10 @@ https://docs.docker.com/install/
 `git clone https://github.com/iacovlev-pavel/giscuit-docker.git`
 
 ### Build
-`docker build github.com/iacovlev-pavel/giscuit-docker -t giscuit-docker`
+`sudo docker build github.com/iacovlev-pavel/giscuit-docker -t giscuit-docker`
 
 ### Run
-`docker run -p 80:80 --name giscuit -itd giscuit-docker`
+`sudo docker run -p 80:80 --name giscuit -itd giscuit-docker`
 
 ### Connect
 `docker exec -i -t giscuit /bin/bash`
