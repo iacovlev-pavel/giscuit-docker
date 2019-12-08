@@ -73,6 +73,9 @@ run('apt-get -y -qq install php5 php5-pgsql php5-mapscript php5-gd php-apc');
 // IonCube
 installIonCube();
 
+fwrite(STDOUT, "Downloading and installing PostgreSQL and PostGIS...\n");
+run('apt-get -y -qq install postgresql-9.3-postgis-2.1');
+
 // GDAL
 fwrite(STDOUT, "Downloading and installing GDAL...\n");
 run('apt-get -y -qq install gdal-bin');
