@@ -2,7 +2,7 @@
 https://docs.docker.com/install/
 
 ### Pull docker image
-`git clone git@github.com:iacovlev-pavel/giscuit-docker.git`
+`git clone https://github.com/iacovlev-pavel/giscuit-docker.git`
 
 ### Build
 `docker build github.com/iacovlev-pavel/giscuit-docker -t giscuit-docker`
