@@ -1,6 +1,6 @@
 <?php
 
-//Config
+// Config
 $giscuitVersion = '1.4.3';
 $downloadsUrl = 'http://downloads.giscuit.com';
 
@@ -12,20 +12,20 @@ putenv('DEBIAN_FRONTEND=noninteractive');
 ini_set('memory_limit', '16M');
 define('IO_REDIRECT', ' > /dev/null 2>&1');
 
-//Install name
+// Install name
 $GLOBALS['config']['installName'] = 'giscuit';
 if(file_exists("/etc/apache2/sites-available/{$GLOBALS['config']['installName']}") ||
     file_exists("/etc/httpd/conf.d/{$GLOBALS['config']['installName']}.conf")) {
     error("Virtual host ({$GLOBALS['config']['installName']}) already exists");
 }
 
-//Install path
+// Install path
 $GLOBALS['config']['installPath'] .= '/' . $GLOBALS['config']['installName'];
 if(file_exists($GLOBALS['config']['installPath'])) {
     error("Install path ({$GLOBALS['config']['installPath']}) already exists");
 }
 
-//Virtual host
+// Virtual host
 $apacheAccessLog = '/var/log/apache2/access.log';
 $virtualHost = "<VirtualHost *:80>
     ServerAdmin webmaster@localhost
@@ -49,12 +49,12 @@ $virtualHost = "<VirtualHost *:80>
 </VirtualHost>";
 run("mkdir -p {$GLOBALS['config']['installPath']} ");
 
-//Utils
+// Utils
 fwrite(STDOUT, "Downloading and installing utilities...\n");
 run('apt-get -y -qq update');
 run('apt-get -y -qq install unzip python-imaging ttf-freefont ttf-liberation python-software-properties');
 
-//Apache
+// Apache
 fwrite(STDOUT, "Downloading and installing Apache...\n");
 run('apt-get -y -qq install apache2');
 run('a2enmod rewrite');
@@ -66,29 +66,29 @@ fwrite(STDOUT, "Disabling apache2 \"default\" site...\n");
 run('a2dissite 000-default');
 run("a2ensite {$GLOBALS['config']['installName']}");
 
-//PHP
+// PHP
 fwrite(STDOUT, "Downloading and installing PHP...\n");
 run('apt-get -y -qq install php5 php5-pgsql php5-mapscript php5-gd php-apc');
 
-//IonCube
+// IonCube
 installIonCube();
 
-//GDAL
+// GDAL
 fwrite(STDOUT, "Downloading and installing GDAL...\n");
 run('apt-get -y -qq install gdal-bin');
 
-//Giscuit
+// Giscuit
 fwrite(STDOUT, "Downloading and installing Giscuit...\n");
 run("wget -q -O {$GLOBALS['config']['installPath']}/giscuit.zip {$downloadsUrl}/giscuit-{$giscuitVersion}-linux.zip");
 run("cd {$GLOBALS['config']['installPath']} && unzip -o -d . giscuit.zip && mv -f giscuit/* . && rmdir giscuit");
 unlink("{$GLOBALS['config']['installPath']}/giscuit.zip");
 
-//Permissions
+// Permissions
 run('chown -R www-data:www-data /var/lib/php5');
 run("chown -R www-data:www-data {$GLOBALS['config']['installPath']}");
 run("chmod 0700 {$GLOBALS['config']['installPath']}/configs/config.xml");
 
-//Done
+// Done
 fwrite(STDOUT, "\nPlease access http://YOUR_DOMAIN/install.php to proceed with the installation.\n");
 
 function run($cmd) {
@@ -117,10 +117,10 @@ function installIonCube() {
         unlink("{$GLOBALS['config']['installPath']}/ioncube.zip");
     }
 
-    //Php version
+    // PHP version
     $phpVersion = substr(PHP_VERSION, 0, 3);
 
-    //Thread safety
+    // Thread safety
     ob_start();
     phpinfo(INFO_GENERAL);
     $phpinfo = ob_get_contents();
