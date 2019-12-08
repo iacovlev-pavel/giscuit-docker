@@ -28,3 +28,6 @@ WORKDIR /root
 
 # Define default command
 CMD ["bash"]
+
+#  Start Apache
+CMD service apache2 start
