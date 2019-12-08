@@ -1,8 +1,8 @@
-### Base Docker Image
-* [ubuntu:14.04](https://registry.hub.docker.com/u/library/ubuntu/)
+### Install docker
+https://docs.docker.com/install/
 
-### Installation
-* https://docs.docker.com/install/
+### Pull docker image
+`git clone git@github.com:iacovlev-pavel/giscuit-docker.git`
 
 ### Build
 `docker build github.com/iacovlev-pavel/giscuit-docker -t giscuit-docker`
