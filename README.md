@@ -29,7 +29,7 @@ host    all    all    0.0.0.0/0     md5
 host    all    all    ::0/0         md5
 ```
 to the end of `/etc/postgresql/10/main/pg_hba.conf`
-and restart PostgreSQL
+and restart PostgreSQL.
 
 # Giscuit
 ### Install docker
