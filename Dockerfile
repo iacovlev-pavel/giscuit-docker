@@ -1,13 +1,7 @@
-#
-# Ubuntu Dockerfile
-#
-# https://github.com/dockerfile/ubuntu
-#
-
-# Pull base image.
+# Pull ubuntu image
 FROM ubuntu:14.04
 
-# Install.
+# Install
 RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   DEBIAN_FRONTEND=noninteractive apt-get update && \
@@ -17,20 +11,20 @@ RUN \
   DEBIAN_FRONTEND=noninteractive apt-get install -y byobu curl git htop man wget php5-cli nano && \
   rm -rf /var/lib/apt/lists/*
 
-# Install Giscuit.
+# Install Giscuit
 ADD root/install.php /root/install.php
 RUN php /root/install.php
 
-# Add files.
+# Add files
 ADD root/.bashrc /root/.bashrc
 ADD root/.gitconfig /root/.gitconfig
 ADD root/.scripts /root/.scripts
 
-# Set environment variables.
+# Set environment variables
 ENV HOME /root
 
-# Define working directory.
+# Define working directory
 WORKDIR /root
 
-# Define default command.
+# Define default command
 CMD ["bash"]
