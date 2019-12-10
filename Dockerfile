@@ -26,8 +26,8 @@ ENV HOME /root
 # Define working directory
 WORKDIR /root
 
-# Define default command
-CMD ["bash"]
-
-#  Start Apache
-CMD service apache2 start
+# Expose Apache
+EXPOSE 80
+ 
+# Launch Apache
+CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
