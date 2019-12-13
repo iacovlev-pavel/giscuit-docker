@@ -28,6 +28,6 @@ WORKDIR /root
 
 # Expose Apache
 EXPOSE 80
- 
-# Launch Apache
-CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
+
+# Bash
+CMD ["bash"]
