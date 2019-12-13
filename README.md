@@ -45,9 +45,7 @@ https://docs.docker.com/install/
 `sudo docker run -p 80:80 --name giscuit -itd giscuit-docker`
 
 ### Start Giscuit web install
+`sudo docker exec -i -t giscuit /bin/bash`
 Open `http://IP_ADDRESS/install.php` in browser.
 Database username: giscuit
 Database password: The one specified during `createdb` operation.
-
-# Debug
-`docker exec -i -t giscuit /bin/bash`
