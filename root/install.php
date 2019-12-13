@@ -61,6 +61,7 @@ run('a2enmod rewrite');
 run('a2enmod expires');
 file_put_contents("{$GLOBALS['config']['installPath']}/apache.conf", $virtualHost);
 run("ln -s {$GLOBALS['config']['installPath']}/apache.conf /etc/apache2/sites-available/{$GLOBALS['config']['installName']}.conf");
+run("ln -s /etc/apache2/mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load");
 
 fwrite(STDOUT, "Disabling apache2 \"default\" site...\n");
 run('a2dissite 000-default');
