@@ -44,6 +44,12 @@ https://docs.docker.com/install/
 ### Run image
 `sudo docker run -p 80:80 --name giscuit -itd giscuit-docker`
 
+### Start apache
+```
+sudo docker exec -i -t giscuit /bin/bash
+sudo service apache2 start
+```
+
 ### Start Giscuit web install
  * `sudo docker exec -i -t giscuit /bin/bash`
  * Open `http://IP_ADDRESS/install.php` in browser.
